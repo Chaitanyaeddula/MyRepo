@@ -20,10 +20,10 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Run remote commands') {
             steps {
                 sh '''
-                scp -i /var/lib/jenkins/.ssh/chai-key-pair.pem -o StrictHostKeyChecking=no -r hello-world.html ubuntu@54.152.14.241:/var/www/html/
+                   ssh -i /var/lib/jenkins/.ssh/chai-key-pair.pem -o StrictHostKeyChecking=no ubuntu@54.152.14.241 "echo Hello from EC2; hostname; uptime"
                 '''
             }
         }
