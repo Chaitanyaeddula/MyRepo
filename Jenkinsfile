@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/Chaitanyaeddula/MyRepo.git'
+                checkout scm
             }
         }
 
@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                scp -i ~/.ssh/chai-key-pair.pem -r * ec2-user@54.152.14.241:/var/www/html/
+                scp -i /var/lib/jenkins/.ssh/chai-key-pair.pem -o StrictHostKeyChecking=no -r hello-world.html ubuntu@54.152.14.241:/var/www/html/
                 '''
             }
         }
