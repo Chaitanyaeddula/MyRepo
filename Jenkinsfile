@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your-user/your-repo.git'
+                git 'https://github.com/Chaitanyaeddula/MyRepo.git'
             }
         }
 
@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                scp -i ~/.ssh/chai-key-pair.pem -r * ec2-user@<target-ec2-ip>:/var/www/html/
+                scp -i ~/.ssh/chai-key-pair.pem -r * ec2-user@54.152.14.241:/var/www/html/
                 '''
             }
         }
